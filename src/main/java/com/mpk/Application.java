@@ -35,25 +35,13 @@ public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(Application.class, args);
     }
-    @Autowired
-    CharacterCardService characterCardService;
+
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(Application.class);
     }
-    /*@Bean
-    public String fillDataCharacterCard() throws Exception {
-        Set<PersonTrait> personTraits = new HashSet<>();
-        personTraits.add(PersonTrait.BUSHI);
-        personTraits.add(PersonTrait.SHUGENJA);
-        personTraits.add(PersonTrait.CHAMPION);
-        CharacterCard card1 = new CharacterCard("Togashi Jokuni", "Action: Choose a triggered ability printed on another character – this character gains that ability until the end of the phase. (Max 1 per round.)", Clan.DRAGON, 5, 5, 5, 3, "What transpires in our mountains is a mere pebble against the avalanche that is coming.", personTraits, false);
-        characterCardService.saveCard(card1);
-        personTraits = new HashSet<>();
-        personTraits.add(PersonTrait.COURTIER);
-        characterCardService.saveCard(new CharacterCard("Bayushi Kachiko", "While this character is participating in a Political conflict, choose a participating character with lower Political skill than this character – move the chosen character home. Then, you may bow it.", Clan.SCORPION, 5, 3, 6, 3, "Which of us would bid this game to end? We are nearly perfectly matched, but there can only be one victor.", personTraits, true));
-        return "Model complited";
-    }*/
+
+
     @Bean
     public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
         MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
