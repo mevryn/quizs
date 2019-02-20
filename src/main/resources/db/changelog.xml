@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="micha (generated)" id="1550680664497-1">
+        <createSequence sequenceName="attachment_card_id_seq"/>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-2">
+        <createSequence sequenceName="character_card_id_seq"/>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-3">
+        <createSequence sequenceName="event_card_id_seq"/>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-4">
+        <createSequence sequenceName="holding_card_id_seq"/>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-5">
+        <createSequence sequenceName="province_card_id_seq"/>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-6">
+        <createSequence sequenceName="stronghold_card_id_seq"/>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-7">
+        <createTable tableName="attachment_card">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="attachment_card_pkey"/>
+            </column>
+            <column name="clan" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="fate_cost" type="INT"/>
+            <column name="military_add" type="INT"/>
+            <column name="political_add" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-8">
+        <createTable tableName="attachment_card_other_traits">
+            <column name="attachment_card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_traits" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-9">
+        <createTable tableName="character_card">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="character_card_pkey"/>
+            </column>
+            <column name="clan" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="conflict_card" type="BOOL"/>
+            <column name="fate_cost" type="INT"/>
+            <column name="glory" type="INT"/>
+            <column name="military_skill" type="INT"/>
+            <column name="political_skill" type="INT"/>
+            <column name="quotation" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-10">
+        <createTable tableName="character_card_person_traits">
+            <column name="character_card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="person_traits" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-11">
+        <createTable tableName="event_card">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="event_card_pkey"/>
+            </column>
+            <column name="clan" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="fate_cost" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ring" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-12">
+        <createTable tableName="event_card_other_trait_set">
+            <column name="event_card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="other_trait_set" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-13">
+        <createTable tableName="holding_card">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="holding_card_pkey"/>
+            </column>
+            <column name="clan" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="def_add" type="INT"/>
+            <column name="location_trait" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-14">
+        <createTable tableName="province_card">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="province_card_pkey"/>
+            </column>
+            <column name="clan" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="defense" type="INT"/>
+            <column name="ring" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-15">
+        <createTable tableName="stronghold_card">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="stronghold_card_pkey"/>
+            </column>
+            <column name="clan" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="add_defense" type="INT"/>
+            <column name="fate_value" type="INT"/>
+            <column name="location_trait" type="INT"/>
+            <column name="start_honor" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-16">
+        <addForeignKeyConstraint baseColumnNames="event_card_id" baseTableName="event_card_other_trait_set" constraintName="fkg129r6ibfbam58h1bf37r6ghf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="event_card"/>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-17">
+        <addForeignKeyConstraint baseColumnNames="character_card_id" baseTableName="character_card_person_traits" constraintName="fknh0n9k3rcmy5e7alqxbguai3q" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="character_card"/>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-18">
+        <addForeignKeyConstraint baseColumnNames="attachment_card_id" baseTableName="attachment_card_other_traits" constraintName="fkpudrfb60gmsv25ub7icsece47" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="attachment_card"/>
+    </changeSet>
+</databaseChangeLog>

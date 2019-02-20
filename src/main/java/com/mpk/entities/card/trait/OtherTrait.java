@@ -1,0 +1,32 @@
+package com.mpk.entities.card.trait;
+
+public enum OtherTrait {
+    BANNER,
+    CONDITION,
+    CREATURE,
+    CURSE,
+    FESTIVAL,
+    FOLLOWER,
+    GAIJIN,
+    IMPERIAL,
+    ITEM,
+    JADE,
+    KIHO,
+    MAHO,
+    MANTISCLAN,
+    MASK,
+    MEISHODO,
+    MOUNT,
+    OMEN,
+    PHILOSOPHY,
+    POISON,
+    RITUAL,
+    SEAL,
+    SHADOWLANDS,
+    SPELL,
+    TACTIC,
+    TATTOO,
+    TECHNIQUE,
+    TRAP,
+    WEAPON
+}
