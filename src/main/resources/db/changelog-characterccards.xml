@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="micha (generated)" id="1550680664497-9">
+        <createTable tableName="character_card">
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="character_card_pkey"/>
+            </column>
+            <column name="clan" type="INT"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="conflict_card" type="BOOL"/>
+            <column name="fate_cost" type="INT"/>
+            <column name="glory" type="INT"/>
+            <column name="military_skill" type="INT"/>
+            <column name="political_skill" type="INT"/>
+            <column name="quotation" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="micha (generated)" id="1550680664497-10">
+        <createTable tableName="character_card_person_traits">
+            <column name="character_card_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="person_traits" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="togashijokuni" author="michal">
+        <insert tableName="character_card">
+            <column name="name" value="Togashi Jokuni"/>
+            <column name="description" value="Action: Choose a triggered ability printed on another character – this character gains that ability until the end of the phase. (Max 1 per round.)"/>
+            <column name="clan" value="5"/>
+            <column name="fate_cost" value="5"/>
+            <column name="glory" value="3"/>
+            <column name="military_skill" value="5"/>
+            <column name="political_skill" value="5"/>
+            <column name="quotation" value="What transpires in our mountains is a mere pebble against the avalanche that is coming."/>
+            <column name="conflict_card" value="false"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="togashijokuni_traits1" author="michal">
+        <insert tableName="character_card_person_traits">
+            <column name="character_card_id" value="1"/>
+            <column name="person_traits" value="SHUGENJA"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="togashijokuni_traits2" author="michal">
+        <insert tableName="character_card_person_traits">
+            <column name="character_card_id" value="1"/>
+            <column name="person_traits" value="BUSHI"/>
+
+        </insert>
+    </changeSet>
+    <changeSet id="togashijokuni_trait3" author="michal">
+        <insert tableName="character_card_person_traits">
+            <column name="character_card_id" value="1"/>
+            <column name="person_traits" value="CHAMPION"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="bayushikachiko" author="michal">
+        <insert tableName="character_card">
+            <column name="name" value="Bayushi Kahiko"/>
+            <column name="description" value="While this character is participating in a Political conflict, choose a participating character with lower Political skill than this character – move the chosen character home. Then, you may bow it."/>
+            <column name="clan" value="5"/>
+            <column name="fate_cost" value="5"/>
+            <column name="glory" value="3"/>
+            <column name="military_skill" value="3"/>
+            <column name="political_skill" value="6"/>
+            <column name="quotation" value="Which of us would bid this game to end? We are nearly perfectly matched, but there can only be one victor."/>
+            <column name="conflict_card" value="true"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="bayushikachiko_traits1" author="michal">
+        <insert tableName="character_card_person_traits">
+            <column name="character_card_id" value="2"/>
+            <column name="person_traits" value="COURTIER"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="bayushikachiko_trait2" author="michal">
+        <insert tableName="character_card_person_traits">
+            <column name="character_card_id" value="2"/>
+            <column name="person_traits" value="IMPERIAL"/>
+        </insert>
+    </changeSet>
+    <changeSet id="isawatadaka" author="michal">
+        <insert tableName="character_card">
+            <column name="name" value="Isawa Tadaka"/>
+            <column name="description" value="Each opponent cannot play copies of event cards that are in his or her conflict discard pile unless the earth ring is in that player’s claimed ring pool."/>
+            <column name="clan" value="4"/>
+            <column name="fate_cost" value="5"/>
+            <column name="glory" value="2"/>
+            <column name="military_skill" value="5"/>
+            <column name="political_skill" value="3"/>
+            <column name="quotation" value="As a mountain’s roots run deep, I shall not be moved."/>
+            <column name="conflict_card" value="false"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="isawatadaka_traits1" author="michal">
+        <insert tableName="character_card_person_traits">
+            <column name="character_card_id" value="3"/>
+            <column name="person_traits" value="SHUGENJA"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="isawatadaka_trait2" author="michal">
+        <insert tableName="character_card_person_traits">
+            <column name="character_card_id" value="3"/>
+            <column name="person_traits" value="ELEMENTALMASTER"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
