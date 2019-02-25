@@ -1,9 +1,7 @@
 package com.mpk.controllers;
 
-import com.mpk.entities.card.Card;
 import com.mpk.entities.card.CharacterCard;
 import com.mpk.entities.card.trait.Clan;
-import com.mpk.entities.card.trait.OtherTrait;
 import com.mpk.entities.card.trait.PersonTrait;
 import com.mpk.services.CharacterCardService;
 import org.springframework.beans.factory.annotation.Autowired;

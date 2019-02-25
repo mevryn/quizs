@@ -12,7 +12,17 @@ import java.util.Set;
 @Entity
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,
         property="refId", scope=CharacterCard.class)
-public class CharacterCard extends Card {
+public class CharacterCard{
+    @Column
+    protected String name;
+    @Column
+    protected String description;
+    @Column
+    protected Clan clan;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    protected Integer id;
     @Column
     private Integer fateCost;
     @Column
@@ -23,15 +33,48 @@ public class CharacterCard extends Card {
     private Integer glory;
     @Column
     private String quotation;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Clan getClan() {
+        return clan;
+    }
+
+    public void setClan(Clan clan) {
+        this.clan = clan;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<PersonTrait> personTraits;
     @Column
     private Boolean conflictCard;
     public CharacterCard(){
-    }
+        }
+
     public CharacterCard(String name, String description, Clan clan, Integer fateCost, Integer militarySkill, Integer politicalSkill, Integer glory, String quotation, Set<PersonTrait> personTraits, Boolean conflictCard) {
-        super(name, description, clan);
+        this.name = name;
+        this.description = description;
+        this.clan=clan;
+
         this.fateCost = fateCost;
         this.militarySkill = militarySkill;
         this.politicalSkill = politicalSkill;

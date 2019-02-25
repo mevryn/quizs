@@ -1,11 +1,12 @@
 package com.mpk.services;
 
-import com.mpk.entities.card.Card;
 import com.mpk.entities.card.CharacterCard;
 import com.mpk.repositories.CharacterCardRepository;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.Iterator;
 
 @Service
 public class CharacterCardService implements CardService {
@@ -21,14 +22,23 @@ public class CharacterCardService implements CardService {
 
     @Override
     public Iterable<CharacterCard> listAllCharacterCards() {
-        return characterCardRepository.findAllCharacterCards();
+        return characterCardRepository.findAll();
     }
-
-    public CharacterCard listFirstCharacterCard(){
-        return characterCardRepository.findById(0).orElse(null);
+    @Override
+    public CharacterCard findByIdCharacterCard(int id){
+        return characterCardRepository.findById(id).orElse(null);
     }
-
-
+    @Override
+    public Integer howManyRows(){
+        Iterable<CharacterCard> listOfAllCards = listAllCharacterCards();
+        Iterator<CharacterCard> iterator = listOfAllCards.iterator();
+        Integer quantity = 0;
+        while(iterator.hasNext()){
+            iterator.next();
+            quantity++;
+        }
+        return quantity;
+    }
 
 
 }
